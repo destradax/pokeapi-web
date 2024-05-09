@@ -1,3 +1,4 @@
+import { getPokemonDetails } from 'api/pokemon';
 import UserLayout from 'components/UserLayout';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -9,13 +10,19 @@ const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
-    setPokemon({ id: pokemonId });
+    const refreshPokemonDetails = async () => {
+      setPokemon(await getPokemonDetails(pokemonId));
+    };
+
+    if (pokemonId) {
+      refreshPokemonDetails();
+    }
   }, [pokemonId]);
 
   return (
     <UserLayout>
       <h1>Pokemon &gt; {pokemon?.id}</h1>
-      <pre className={styles.pre}>{JSON.stringify(pokemon)}</pre>
+      <pre className={styles.pre}>{JSON.stringify(pokemon, null, 2)}</pre>
     </UserLayout>
   );
 };

@@ -7,3 +7,10 @@ export const getPokemonList = async (page = 0, pageSize = 20) => {
   const data = await response.json();
   return pokemonResponseToPokemonList(data);
 };
+
+export const getPokemonDetails = async pokemonId => {
+  const response = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+  );
+  return await response.json();
+};
