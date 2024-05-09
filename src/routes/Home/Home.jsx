@@ -8,20 +8,22 @@ const Home = () => {
 
   useEffect(() => {
     const refreshPokemonList = async () => {
-      const response = await getPokemonList();
-      const data = await response.json();
-
-      setPokemon(data.results);
+      const { pokemon: pokemonList } = await getPokemonList();
+      setPokemon(pokemonList);
     };
 
     refreshPokemonList();
   }, []);
 
+  const handleSelectPokemon = p => {
+    console.log(p);
+  };
+
   return (
     <UserLayout>
       <h1>Pokemon</h1>
 
-      <PokemonList pokemon={pokemon} />
+      <PokemonList pokemon={pokemon} onSelectPokemon={handleSelectPokemon} />
     </UserLayout>
   );
 };

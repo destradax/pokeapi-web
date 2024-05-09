@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './PokemonList.module.scss';
 
-const PokemonList = ({ pokemon }) => {
+const PokemonList = ({ pokemon, onSelectPokemon }) => {
   return (
     <table className={styles.pokemonList}>
       <thead>
@@ -13,7 +13,7 @@ const PokemonList = ({ pokemon }) => {
 
       <tbody>
         {pokemon.map(p => (
-          <tr key={p.name}>
+          <tr key={p.name} onClick={() => onSelectPokemon(p)}>
             <td>{p.name}</td>
             <td>false</td>
           </tr>
@@ -24,7 +24,8 @@ const PokemonList = ({ pokemon }) => {
 };
 
 PokemonList.propTypes = {
-  pokemon: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
+  pokemon: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
+  onSelectPokemon: PropTypes.func
 };
 
 export default PokemonList;
