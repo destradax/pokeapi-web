@@ -1,3 +1,4 @@
+import { login } from 'api/session';
 import Button from 'components/Button';
 import EmailInput from 'components/EmailInput';
 import PasswordInput from 'components/PasswordInput';
@@ -9,9 +10,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    setErrorMessage('Invalid credentials');
+
+    try {
+      await login(email, password);
+      // TODO redirect to /home
+    } catch (error) {
+      setErrorMessage(await error.json());
+    }
   };
 
   const handleChangeEmail = newEmail => {
