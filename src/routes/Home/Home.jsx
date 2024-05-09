@@ -1,5 +1,7 @@
+import UserLayout from 'components/UserLayout';
+
 const Home = () => {
-  return <div>Home</div>;
+  return <UserLayout>Home</UserLayout>;
 };
 
 export default Home;
