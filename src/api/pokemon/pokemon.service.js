@@ -10,14 +10,16 @@ export const getPokemonIDFromURL = url => {
 
   const substrings = url.split('/');
 
-  return substrings[substrings.length - 2];
+  const id = Number(substrings[substrings.length - 2]);
+
+  return id || null;
 };
 
 /**
  *
  * @param {array} pokemonResponse.results An array of pokemon in the form `{name: string, url: string}`
  * @param {number} pokemonResponse.count The total count of pokemon
- * @returns An object with `pokemonCount`, a number representing the total count of pokemon; and `pokemon`, an array of objects in the form `{id: string, name: string}`
+ * @returns An object with `pokemonCount`, a number representing the total count of pokemon; and `pokemon`, an array of objects in the form `{id: number, name: string}`
  */
 export const pokemonResponseToPokemonList = pokemonResponse => {
   const pokemon = (pokemonResponse.results ?? [])

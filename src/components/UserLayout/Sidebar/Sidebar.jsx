@@ -9,7 +9,7 @@ const Sidebar = () => {
             <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/dummy">Dummy Page</Link>
+            <Link to="/favorites">Favorites</Link>
           </li>
           <li>
             <Link to="/login">Log Out</Link>

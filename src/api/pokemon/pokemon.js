@@ -14,3 +14,7 @@ export const getPokemonDetails = async pokemonId => {
   );
   return await response.json();
 };
+
+export const getMultiplePokemonById = async pokemonIds => {
+  return await Promise.all(pokemonIds.map(id => getPokemonDetails(id)));
+};

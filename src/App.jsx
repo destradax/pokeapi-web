@@ -1,7 +1,7 @@
 import DefaultLayout from 'components/DefaultLayout';
-import UserLayout from 'components/UserLayout';
 import { FavoritesProvider } from 'context/favoritePokemon';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import FavoritePokemon from 'routes/FavoritePokemon';
 import Home from 'routes/Home';
 import Login from 'routes/Login';
 import PokemonDetails from 'routes/PokemonDetails';
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
     element: <PokemonDetails />
   },
   {
-    path: '/dummy',
-    element: <UserLayout>Dummy Page</UserLayout>
+    path: '/favorites',
+    element: <FavoritePokemon />
   }
 ]);
 

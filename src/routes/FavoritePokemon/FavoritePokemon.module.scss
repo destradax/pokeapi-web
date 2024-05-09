@@ -1,0 +1,13 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+
+  tr {
+    cursor: pointer;
+    height: 40px;
+
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
+}
