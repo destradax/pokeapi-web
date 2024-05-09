@@ -1,9 +1,12 @@
 import { getPokemonList } from 'api/pokemon';
 import UserLayout from 'components/UserLayout';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PokemonList from './PokemonList';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
@@ -15,9 +18,7 @@ const Home = () => {
     refreshPokemonList();
   }, []);
 
-  const handleSelectPokemon = p => {
-    console.log(p);
-  };
+  const handleSelectPokemon = p => navigate(`/pokemon/${p.id}`);
 
   return (
     <UserLayout>
