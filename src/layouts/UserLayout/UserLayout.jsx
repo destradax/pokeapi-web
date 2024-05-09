@@ -1,19 +1,17 @@
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import styles from './UserLayout.module.scss';
 
-const UserLayout = ({ children }) => {
+const UserLayout = () => {
   return (
     <div className={styles.layout}>
       <Sidebar />
 
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
-};
-
-UserLayout.propTypes = {
-  children: PropTypes.node
 };
 
 export default UserLayout;

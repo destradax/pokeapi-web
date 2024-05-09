@@ -6,7 +6,7 @@ const Sidebar = () => {
       <nav>
         <ol>
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/pokemon">Home</Link>
           </li>
           <li>
             <Link to="/favorites">Favorites</Link>

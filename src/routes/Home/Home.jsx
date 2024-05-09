@@ -1,5 +1,4 @@
 import { getPokemonList } from 'api/pokemon';
-import UserLayout from 'components/UserLayout';
 import { useFavorites } from 'context/favoritePokemon';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +30,7 @@ const Home = () => {
   };
 
   return (
-    <UserLayout>
+    <div>
       <h1>Pokemon</h1>
 
       <PokemonList
@@ -40,7 +39,7 @@ const Home = () => {
         favoritePokemon={favorites}
         onToggleFavorite={handleToggleFavorite}
       />
-    </UserLayout>
+    </div>
   );
 };
 
