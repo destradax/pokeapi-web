@@ -3,9 +3,12 @@ import Button from 'components/Button';
 import EmailInput from 'components/EmailInput';
 import PasswordInput from 'components/PasswordInput';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.scss';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
@@ -15,7 +18,7 @@ const Login = () => {
 
     try {
       await login(email, password);
-      // TODO redirect to /home
+      navigate('/home');
     } catch (error) {
       setErrorMessage(await error.json());
     }
