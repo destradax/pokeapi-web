@@ -1,5 +1,6 @@
 import DefaultLayout from 'components/DefaultLayout';
 import UserLayout from 'components/UserLayout';
+import { FavoritesProvider } from 'context/favoritePokemon';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from 'routes/Home';
 import Login from 'routes/Login';
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <DefaultLayout>
-      <RouterProvider router={router} />
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
     </DefaultLayout>
   );
 };

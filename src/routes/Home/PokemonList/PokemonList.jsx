@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import styles from './PokemonList.module.scss';
 
-const PokemonList = ({ pokemon, onSelectPokemon }) => {
+const PokemonList = ({
+  pokemon,
+  onSelectPokemon,
+  favoritePokemon,
+  onToggleFavorite
+}) => {
   return (
     <table className={styles.pokemonList}>
       <thead>
@@ -12,12 +17,25 @@ const PokemonList = ({ pokemon, onSelectPokemon }) => {
       </thead>
 
       <tbody>
-        {pokemon.map(p => (
-          <tr key={p.name} onClick={() => onSelectPokemon(p)}>
-            <td>{p.name}</td>
-            <td>false</td>
-          </tr>
-        ))}
+        {pokemon.map(p => {
+          const isFavorite = favoritePokemon.includes(p.id);
+
+          return (
+            <tr key={p.name} onClick={() => onSelectPokemon(p)}>
+              <td>{p.name}</td>
+              <td>
+                <button
+                  onClick={e => {
+                    e.stopPropagation();
+                    onToggleFavorite(p.id, !isFavorite);
+                  }}
+                >
+                  {isFavorite ? 'Yes' : 'No'}
+                </button>
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
@@ -25,7 +43,9 @@ const PokemonList = ({ pokemon, onSelectPokemon }) => {
 
 PokemonList.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
-  onSelectPokemon: PropTypes.func
+  onSelectPokemon: PropTypes.func,
+  favoritePokemon: PropTypes.array,
+  onToggleFavorite: PropTypes.func
 };
 
 export default PokemonList;
