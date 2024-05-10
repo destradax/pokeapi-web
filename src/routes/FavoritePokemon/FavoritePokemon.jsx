@@ -50,16 +50,14 @@ const FavoritePokemon = () => {
               onClick={() => handleSelectPokemon(p)}
             >
               <div className={styles.pokemonName}>{p.name}</div>
-              <div>
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    handleToggleFavorite(p.id, !isFavorite);
-                  }}
-                >
-                  {isFavorite ? 'Yes' : 'No'}
-                </button>
-              </div>
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  handleToggleFavorite(p.id, !isFavorite);
+                }}
+              >
+                {isFavorite ? 'Yes' : 'No'}
+              </button>
             </div>
           );
         })}
