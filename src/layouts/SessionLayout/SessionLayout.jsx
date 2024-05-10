@@ -3,10 +3,15 @@ import useLocalStorage from 'hooks/useLocalStorage';
 import { Outlet } from 'react-router-dom';
 
 const SessionLayout = () => {
-  const [user, setUser] = useLocalStorage('user');
+  const { value: user, setValue: setUser, clear } = useLocalStorage('user');
+
+  const logout = () => {
+    clear();
+    setUser(null);
+  };
 
   return (
-    <sessionContext.Provider value={{ user, setUser }}>
+    <sessionContext.Provider value={{ user, setUser, logout }}>
       <Outlet />
     </sessionContext.Provider>
   );

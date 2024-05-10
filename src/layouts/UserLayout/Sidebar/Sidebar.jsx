@@ -1,6 +1,9 @@
+import { useSession } from 'context/session';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+  const { user, logout } = useSession();
+
   return (
     <div>
       <nav>
@@ -11,11 +14,12 @@ const Sidebar = () => {
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>
-          <li>
-            <Link to="/login">Log Out</Link>
-          </li>
         </ol>
       </nav>
+      user: {user.name}
+      email: {user.email}
+      <br />
+      <button onClick={logout}>Log Out</button>
     </div>
   );
 };

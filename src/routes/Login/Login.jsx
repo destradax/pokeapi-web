@@ -9,6 +9,7 @@ import styles from './Login.module.scss';
 const Login = () => {
   const { setUser } = useSession();
 
+  // TODO remove hardcoded data
   const [email, setEmail] = useState('admin@57blocks.io');
   const [password, setPassword] = useState('admin123*');
   const [errorMessage, setErrorMessage] = useState(null);

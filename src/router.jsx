@@ -15,7 +15,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<SessionLayout />}>
       <Route element={<DefaultLayout />}>
-        <Route path="login" element={<Login />} />
+        <Route path="login?" element={<Login />} />
       </Route>
       <Route element={<UserLayout />}>
         <Route path="pokemon/:pokemonId" element={<PokemonDetails />} />
