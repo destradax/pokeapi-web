@@ -1,5 +1,5 @@
 import { getPokemonList } from 'api/pokemon';
-import ComboBox from 'components/ComboBox';
+import AutocompleteInput from 'components/AutocompleteInput';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -38,7 +38,11 @@ const PokemonList = ({
 
   return (
     <>
-      <ComboBox value={search} onChange={setSearch} />
+      <AutocompleteInput
+        value={search}
+        onChange={setSearch}
+        suggestions={pokemonList.map(({ name }) => name)}
+      />
 
       <div className={styles.list}>
         <div className={styles.header}>
