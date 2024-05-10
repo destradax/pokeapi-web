@@ -1,3 +1,4 @@
+import { FavoritesProvider } from 'context/favoritePokemon';
 import { useSession } from 'context/session';
 import { Navigate, Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -15,7 +16,9 @@ const UserLayout = () => {
       <Sidebar />
 
       <main>
-        <Outlet />
+        <FavoritesProvider>
+          <Outlet />
+        </FavoritesProvider>
       </main>
     </div>
   );

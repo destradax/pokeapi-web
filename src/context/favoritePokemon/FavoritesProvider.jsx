@@ -1,19 +1,22 @@
+import useLocalStorage from 'hooks/useLocalStorage';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { favoritePokemonContext } from './context';
 
 const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+  const { value: favorites, setValue: setFavorites } = useLocalStorage(
+    'favorites',
+    []
+  );
 
   const addFavorite = pokemonId => {
     if (!favorites.includes(pokemonId)) {
-      setFavorites(ids => [...ids, pokemonId]);
+      setFavorites([...favorites, pokemonId]);
     }
   };
 
   const removeFavorite = pokemonId => {
     if (favorites.includes(pokemonId)) {
-      setFavorites(ids => ids.filter(id => id !== pokemonId));
+      setFavorites(favorites.filter(id => id !== pokemonId));
     }
   };
 

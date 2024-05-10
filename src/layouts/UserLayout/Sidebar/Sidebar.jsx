@@ -16,7 +16,8 @@ const Sidebar = () => {
           </li>
         </ol>
       </nav>
-      user: {user.name}
+      user: {user.userName}
+      <br />
       email: {user.email}
       <br />
       <button onClick={logout}>Log Out</button>

@@ -6,8 +6,8 @@ const SessionLayout = () => {
   const { value: user, setValue: setUser, clear } = useLocalStorage('user');
 
   const logout = () => {
-    clear();
     setUser(null);
+    clear();
   };
 
   return (
