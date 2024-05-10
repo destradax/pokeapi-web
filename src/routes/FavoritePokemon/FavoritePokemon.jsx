@@ -1,4 +1,5 @@
 import { getMultiplePokemonById } from 'api/pokemon';
+import clsx from 'clsx';
 import { useFavorites } from 'context/favoritePokemon';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,39 +31,39 @@ const FavoritePokemon = () => {
   };
 
   return (
-    <div>
-      <h1>Favorites</h1>
+    <div className={clsx(styles.favoritePokemon)}>
+      <h1>Favorite Pokemon</h1>
 
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Pokemon Name</th>
-            <th>Favorite?</th>
-          </tr>
-        </thead>
+      <div className={styles.list}>
+        <div className={clsx(styles.listItem, styles.listHeader)}>
+          <div>Pokemon Name</div>
+          <div>Favorite?</div>
+        </div>
 
-        <tbody>
-          {pokemon.map(p => {
-            const isFavorite = favorites.includes(p.id);
+        {pokemon.map(p => {
+          const isFavorite = favorites.includes(p.id);
 
-            return (
-              <tr key={p.name} onClick={() => handleSelectPokemon(p)}>
-                <td>{p.name}</td>
-                <td>
-                  <button
-                    onClick={e => {
-                      e.stopPropagation();
-                      handleToggleFavorite(p.id, !isFavorite);
-                    }}
-                  >
-                    {isFavorite ? 'Yes' : 'No'}
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          return (
+            <div
+              key={p.name}
+              className={clsx(styles.listItem, styles.clickableListItem)}
+              onClick={() => handleSelectPokemon(p)}
+            >
+              <div className={styles.pokemonName}>{p.name}</div>
+              <div>
+                <button
+                  onClick={e => {
+                    e.stopPropagation();
+                    handleToggleFavorite(p.id, !isFavorite);
+                  }}
+                >
+                  {isFavorite ? 'Yes' : 'No'}
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

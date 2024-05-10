@@ -64,7 +64,7 @@ const PokemonList = ({
             return (
               <div
                 key={pokemon.id}
-                className={styles.listItem}
+                className={clsx(styles.listItem, styles.clickableListItem)}
                 onClick={() => onSelectPokemon(pokemon)}
               >
                 <div className={styles.pokemonName}>{pokemon.name}</div>
