@@ -17,7 +17,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="animated">
       <h1>Pokemon</h1>
 
       <PokemonList

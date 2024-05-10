@@ -19,7 +19,7 @@ const PokemonDetails = () => {
   }, [pokemonId]);
 
   return (
-    <div>
+    <div className="animated">
       <h1>Pokemon &gt; {pokemon?.id}</h1>
       <pre className={styles.pre}>{JSON.stringify(pokemon, null, 2)}</pre>
     </div>
