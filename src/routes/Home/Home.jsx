@@ -1,5 +1,7 @@
+import clsx from 'clsx';
 import { useFavorites } from 'context/favoritePokemon';
 import { useNavigate } from 'react-router-dom';
+import styles from './Home.module.scss';
 import PokemonList from './PokemonList';
 
 const Home = () => {
@@ -17,7 +19,7 @@ const Home = () => {
   };
 
   return (
-    <div className="animated">
+    <div className={clsx(styles.home, 'animated')}>
       <h1>Pokemon</h1>
 
       <PokemonList

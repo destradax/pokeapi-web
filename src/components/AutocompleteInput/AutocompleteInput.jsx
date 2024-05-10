@@ -11,7 +11,7 @@ const findMatch = (value, suggestions) => {
   return null;
 };
 
-const AutocompleteInput = ({ value, onChange, suggestions }) => {
+const AutocompleteInput = ({ value, onChange, suggestions, placeholder }) => {
   const ref = useRef();
 
   const [typedValue, setTypedValue] = useState(value);
@@ -54,6 +54,7 @@ const AutocompleteInput = ({ value, onChange, suggestions }) => {
       onChange={handleChange}
       ref={ref}
       onBlur={handleBlur}
+      placeholder={placeholder}
     />
   );
 };
@@ -61,7 +62,8 @@ const AutocompleteInput = ({ value, onChange, suggestions }) => {
 AutocompleteInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
-  suggestions: PropTypes.arrayOf(PropTypes.string)
+  suggestions: PropTypes.arrayOf(PropTypes.string),
+  placeholder: PropTypes.string
 };
 
 export default AutocompleteInput;

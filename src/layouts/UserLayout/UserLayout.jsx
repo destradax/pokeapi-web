@@ -15,7 +15,7 @@ const UserLayout = () => {
     <div className={styles.layout}>
       <Sidebar />
 
-      <main>
+      <main className={styles.main}>
         <FavoritesProvider>
           <Outlet />
         </FavoritesProvider>

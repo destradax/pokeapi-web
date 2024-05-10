@@ -1,4 +1,5 @@
 import { getPokemonList } from 'api/pokemon';
+import clsx from 'clsx';
 import AutocompleteInput from 'components/AutocompleteInput';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
@@ -37,16 +38,20 @@ const PokemonList = ({
     : pokemonList;
 
   return (
-    <>
-      <AutocompleteInput
-        value={search}
-        onChange={setSearch}
-        suggestions={pokemonList.map(({ name }) => name)}
-      />
+    <div className={styles.pokemonList}>
+      <div>
+        <AutocompleteInput
+          value={search}
+          onChange={setSearch}
+          suggestions={pokemonList.map(({ name }) => name)}
+          placeholder="Filter by name"
+        />
+      </div>
 
       <div className={styles.list}>
-        <div className={styles.header}>
+        <div className={clsx(styles.listItem, styles.listHeader)}>
           <div>Pokemon Name</div>
+          <div>Favorite?</div>
         </div>
         <InfiniteScroll
           loadMore={loadPage}
@@ -62,7 +67,7 @@ const PokemonList = ({
                 className={styles.listItem}
                 onClick={() => onSelectPokemon(pokemon)}
               >
-                <div>{pokemon.name}</div>
+                <div className={styles.pokemonName}>{pokemon.name}</div>
                 <button
                   onClick={e => {
                     e.stopPropagation();
@@ -76,7 +81,7 @@ const PokemonList = ({
           })}
         </InfiniteScroll>
       </div>
-    </>
+    </div>
   );
 };
 
