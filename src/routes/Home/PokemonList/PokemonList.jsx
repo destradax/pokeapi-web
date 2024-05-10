@@ -1,48 +1,72 @@
+import { getPokemonList } from 'api/pokemon';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import styles from './PokemonList.module.scss';
 
 const PokemonList = ({
-  pokemon,
   onSelectPokemon,
   favoritePokemon,
   onToggleFavorite
 }) => {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [pokemonCount, setPokemonCount] = useState(0);
+
+  const loadPage = async pageNumber => {
+    const { pokemon, pokemonCount: totalCount } =
+      await getPokemonList(pageNumber);
+    setPokemonList([...pokemonList, ...pokemon]);
+    if (totalCount !== pokemonCount) {
+      setPokemonCount(totalCount);
+    }
+  };
+
+  useEffect(() => {
+    loadPage(0);
+
+    return () => {
+      setPokemonList([]);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <table className={styles.pokemonList}>
-      <thead>
-        <tr>
-          <th>Pokemon Name</th>
-          <th>Favorite?</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {pokemon.map(p => {
-          const isFavorite = favoritePokemon.includes(p.id);
-
+    <div className={styles.list}>
+      <div className={styles.header}>
+        <div>Pokemon Name</div>
+      </div>
+      <InfiniteScroll
+        loadMore={loadPage}
+        hasMore={pokemonList.length < pokemonCount}
+        loader={<div key="loader">Loading ...</div>}
+        useWindow={false}
+      >
+        {pokemonList.map(pokemon => {
+          const isFavorite = favoritePokemon.includes(pokemon.id);
           return (
-            <tr key={p.name} onClick={() => onSelectPokemon(p)}>
-              <td>{p.name}</td>
-              <td>
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    onToggleFavorite(p.id, !isFavorite);
-                  }}
-                >
-                  {isFavorite ? 'Yes' : 'No'}
-                </button>
-              </td>
-            </tr>
+            <div
+              key={pokemon.id}
+              className={styles.listItem}
+              onClick={() => onSelectPokemon(pokemon)}
+            >
+              <div>{pokemon.name}</div>
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  onToggleFavorite(pokemon.id, !isFavorite);
+                }}
+              >
+                {isFavorite ? 'Yes' : 'No'}
+              </button>
+            </div>
           );
         })}
-      </tbody>
-    </table>
+      </InfiniteScroll>
+    </div>
   );
 };
 
 PokemonList.propTypes = {
-  pokemon: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string })),
   onSelectPokemon: PropTypes.func,
   favoritePokemon: PropTypes.array,
   onToggleFavorite: PropTypes.func

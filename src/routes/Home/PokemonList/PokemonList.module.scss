@@ -1,13 +1,26 @@
-.pokemonList {
-  table-layout: fixed;
-  width: 100%;
+.list {
+  max-height: 400px;
+  overflow: auto;
+  border: 1px solid black;
+}
 
-  tr {
-    cursor: pointer;
-    height: 40px;
+.header {
+  background-color: white;
+  font-weight: bold;
+  height: 40px;
+  position: sticky;
+  top: 0;
+}
 
-    &:hover {
-      background-color: lightgrey;
-    }
+.listItem {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: lightgrey;
   }
 }
