@@ -12,6 +12,8 @@ import Home from 'routes/Home';
 import Login from 'routes/Login';
 import PokemonDetails from 'routes/PokemonDetails';
 
+gsap.config({ nullTargetWarn: false });
+
 const gsapLoader = () =>
   gsap.to('.animated', { opacity: 0, x: 300, duration: 0.3 });
 
