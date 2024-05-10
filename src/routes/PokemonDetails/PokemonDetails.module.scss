@@ -1,8 +1,28 @@
-.pre {
-  background-color: lightgrey;
-  margin: 20px;
-  max-height: 800px;
-  max-width: 800px;
+.pokemonDetails {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  text-transform: capitalize;
+
+  dt {
+    font-weight: bold;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  overflow: hidden;
+}
+
+.pokemonInfo,
+.gallery {
+  display: flex;
+  flex-direction: column;
   overflow: auto;
-  padding: 1em;
+}
+
+.img {
+  max-width: 200px;
 }
