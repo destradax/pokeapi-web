@@ -7,3 +7,7 @@
   - `jane@57blocks.io` / `jane123*`
 
 - The log in process simulates a request that takes 1.5 seconds to resolve/reject
+
+# Quick Demo
+
+![demo](demo.gif)
