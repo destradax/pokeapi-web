@@ -1,4 +1,6 @@
+import avatarSrc from 'assets/avatar.png';
 import logoSrc from 'assets/logo.png';
+import logoutSrc from 'assets/logout.png';
 import { useSession } from 'context/session';
 import { NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
@@ -25,11 +27,11 @@ const Sidebar = () => {
       </nav>
 
       <div className={styles.userInfo}>
-        <div className={styles.avatar} />
+        <img src={avatarSrc} className={styles.avatar} />
         <span className={styles.userName}>{user.userName}</span>
         <span className={styles.email}>{user.email}</span>
-        <button onClick={logout} className={styles.logout}>
-          L
+        <button onClick={logout} className={styles.logoutButton}>
+          <img src={logoutSrc} className={styles.logoutIcon} />
         </button>
       </div>
     </div>
