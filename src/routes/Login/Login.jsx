@@ -2,25 +2,30 @@ import { login } from 'api/session';
 import Button from 'components/Button';
 import EmailInput from 'components/EmailInput';
 import PasswordInput from 'components/PasswordInput';
+import { useSession } from 'context/session';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.scss';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { setUser } = useSession();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@57blocks.io');
+  const [password, setPassword] = useState('admin123*');
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async event => {
     event.preventDefault();
 
     try {
-      await login(email, password);
-      navigate('/home');
+      const response = await login(email, password);
+      const user = await response.json();
+      setUser(user);
     } catch (error) {
-      setErrorMessage(await error.json());
+      console.error(error);
+      const message = error?.json
+        ? await error.json()
+        : 'An unexpected error occurred';
+      setErrorMessage(message);
     }
   };
 

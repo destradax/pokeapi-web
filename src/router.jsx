@@ -1,4 +1,5 @@
 import DefaultLayout from 'layouts/DefaultLayout';
+import SessionLayout from 'layouts/SessionLayout';
 import UserLayout from 'layouts/UserLayout';
 import {
   Route,
@@ -12,7 +13,7 @@ import PokemonDetails from 'routes/PokemonDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    <Route path="/" element={<SessionLayout />}>
       <Route element={<DefaultLayout />}>
         <Route path="login" element={<Login />} />
       </Route>
