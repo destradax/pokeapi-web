@@ -1,3 +1,4 @@
+import Input from 'components/Input';
 import PropTypes from 'prop-types';
 import styles from './PasswordInput.module.scss';
 
@@ -9,7 +10,7 @@ const PasswordInput = ({ label, value, onChange }) => {
   return (
     <label className={styles.passwordInput}>
       {label}
-      <input type="password" value={value} onChange={handleChange} />
+      <Input type="password" value={value} onChange={handleChange} />
     </label>
   );
 };

@@ -1,3 +1,4 @@
+import Input from 'components/Input';
 import PropTypes from 'prop-types';
 import styles from './EmailInput.module.scss';
 
@@ -9,7 +10,7 @@ const EmailInput = ({ label, value, onChange }) => {
   return (
     <label className={styles.emailInput}>
       {label}
-      <input type="email" value={value} onChange={handleChange} />
+      <Input type="email" value={value} onChange={handleChange} />
     </label>
   );
 };

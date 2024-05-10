@@ -1,3 +1,4 @@
+import Input from 'components/Input';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
@@ -47,7 +48,7 @@ const AutocompleteInput = ({ value, onChange, suggestions }) => {
   };
 
   return (
-    <input
+    <Input
       type="text"
       value={value}
       onChange={handleChange}
