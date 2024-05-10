@@ -1,0 +1,85 @@
+@use 'src/styles/colors';
+
+.sidebar {
+  border-right: 1px solid colors.$grey-light;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.logo {
+  margin: 0 auto;
+  object-fit: contain;
+  width: 90%;
+}
+
+.linkList {
+  font-size: 1.2em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 40px;
+  padding: 0 12px;
+  text-decoration: none;
+  width: 100%;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    background-color: colors.$grey-lighter;
+  }
+
+  &[aria-current] {
+    background-color: colors.$blue-lighter;
+  }
+}
+
+.userInfo {
+  align-items: center;
+  display: grid;
+  font-size: 0.9em;
+  gap: 5px;
+  grid-template-areas:
+    'avatar user logout'
+    'avatar email logout';
+  grid-template-columns: 40px 1fr 40px;
+  margin-top: auto;
+  padding: 0 8px;
+}
+
+.avatar {
+  background-color: colors.$grey-light;
+  border-radius: 50%;
+  grid-area: avatar;
+  height: 40px;
+  width: 40px;
+}
+
+.userName {
+  font-weight: bold;
+  grid-area: user;
+}
+
+.email {
+  grid-area: email;
+}
+
+.logout {
+  align-self: center;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  grid-area: logout;
+  height: 24px;
+  justify-self: center;
+  width: 24px;
+}

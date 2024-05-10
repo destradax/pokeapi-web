@@ -1,26 +1,37 @@
+import logoSrc from 'assets/logo.png';
 import { useSession } from 'context/session';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   const { user, logout } = useSession();
 
   return (
-    <div>
+    <div className={styles.sidebar}>
+      <img src={logoSrc} alt="logo" className={styles.logo} />
       <nav>
-        <ol>
+        <ul className={styles.linkList}>
           <li>
-            <Link to="/pokemon">Home</Link>
+            <NavLink to="/pokemon" className={styles.link}>
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/favorites">Favorites</Link>
+            <NavLink to="/favorites" className={styles.link}>
+              Favorites
+            </NavLink>
           </li>
-        </ol>
+        </ul>
       </nav>
-      user: {user.userName}
-      <br />
-      email: {user.email}
-      <br />
-      <button onClick={logout}>Log Out</button>
+
+      <div className={styles.userInfo}>
+        <div className={styles.avatar} />
+        <span className={styles.userName}>{user.userName}</span>
+        <span className={styles.email}>{user.email}</span>
+        <button onClick={logout} className={styles.logout}>
+          L
+        </button>
+      </div>
     </div>
   );
 };
