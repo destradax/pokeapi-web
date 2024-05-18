@@ -1,10 +1,10 @@
 import { getPokemonList } from 'api/pokemon';
-import clsx from 'clsx';
 import AutocompleteInput from 'components/AutocompleteInput';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import styles from './PokemonList.module.scss';
+import PokemonListItem from './PokemonListItem';
 
 const PokemonList = ({
   onSelectPokemon,
@@ -49,10 +49,6 @@ const PokemonList = ({
       </div>
 
       <div className={styles.list}>
-        <div className={clsx(styles.listItem, styles.listHeader)}>
-          <div>Pokemon Name</div>
-          <div>Favorite?</div>
-        </div>
         <InfiniteScroll
           loadMore={loadPage}
           hasMore={!search && pokemonList.length < pokemonCount}
@@ -61,22 +57,16 @@ const PokemonList = ({
         >
           {filteredPokemonList.map(pokemon => {
             const isFavorite = favoritePokemon.includes(pokemon.id);
+
             return (
-              <div
+              <PokemonListItem
                 key={pokemon.id}
-                className={clsx(styles.listItem, styles.clickableListItem)}
+                pokemonId={pokemon.id}
+                name={pokemon.name}
                 onClick={() => onSelectPokemon(pokemon)}
-              >
-                <div className={styles.pokemonName}>{pokemon.name}</div>
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    onToggleFavorite(pokemon.id, !isFavorite);
-                  }}
-                >
-                  {isFavorite ? 'Yes' : 'No'}
-                </button>
-              </div>
+                isFavorite={isFavorite}
+                onToggleFavorite={onToggleFavorite}
+              />
             );
           })}
         </InfiniteScroll>

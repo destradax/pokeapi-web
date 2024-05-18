@@ -1,0 +1,43 @@
+@use 'src/styles/colors';
+
+.pokemonListItem {
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid colors.$grey-light;
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  grid-template-areas:
+    'avatar name    fav'
+    'avatar summary fav';
+  grid-template-columns: 80px 1fr 40px;
+  padding: 12px;
+
+  &:hover {
+    background-color: colors.$grey-lighter;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.avatar {
+  grid-area: avatar;
+}
+
+.name {
+  font-size: 1.25em;
+  font-weight: bold;
+  grid-area: name;
+  text-transform: capitalize;
+}
+
+.fav {
+  grid-area: fav;
+  justify-self: center;
+}
+
+.summary {
+  grid-area: summary;
+}
