@@ -11,6 +11,9 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <img src={logoSrc} alt="logo" className={styles.logo} />
+
+      <hr className={styles.separator} />
+
       <nav>
         <ul className={styles.linkList}>
           <li>
