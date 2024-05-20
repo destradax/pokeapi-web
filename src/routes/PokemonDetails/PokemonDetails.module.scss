@@ -3,7 +3,7 @@
 .pokemonDetails {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   height: 100%;
   overflow: auto;
 }
@@ -30,6 +30,7 @@
 .card {
   border-radius: 8px;
   border: 1px solid colors.$grey-light;
+  overflow: hidden;
 }
 
 .fullWidthCard {
