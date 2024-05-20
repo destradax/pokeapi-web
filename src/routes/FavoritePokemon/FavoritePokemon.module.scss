@@ -14,3 +14,13 @@
   grid-template-columns: repeat(4, 1fr);
   overflow: auto;
 }
+
+.emptyState {
+  align-items: center;
+  color: colors.$grey;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+  margin: 48px 0;
+  text-align: center;
+}
