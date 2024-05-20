@@ -1,4 +1,7 @@
 import { getPokemonDetails } from 'api/pokemon';
+import clsx from 'clsx';
+import IconButton from 'components/IconButton';
+import { HeartIcon } from 'icons';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Avatar from './Avatar';
@@ -39,9 +42,16 @@ const PokemonListItem = ({
 
       <Summary pokemonData={pokemonData} className={styles.summary} />
 
-      <button className={styles.fav} onClick={handleToggleFavorite}>
-        {isFavorite ? 'Yes' : 'No'}
-      </button>
+      <IconButton
+        onClick={handleToggleFavorite}
+        className={styles.favoriteButton}
+      >
+        <HeartIcon
+          className={clsx(styles.favoriteIcon, {
+            [styles.isFavorite]: isFavorite
+          })}
+        />
+      </IconButton>
     </div>
   );
 };

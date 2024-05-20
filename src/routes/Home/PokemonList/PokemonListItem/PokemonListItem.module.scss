@@ -33,9 +33,17 @@
   text-transform: capitalize;
 }
 
-.fav {
+.favoriteButton {
   grid-area: fav;
   justify-self: center;
+}
+
+.favoriteIcon {
+  color: colors.$grey;
+}
+
+.isFavorite {
+  color: colors.$red;
 }
 
 .summary {
