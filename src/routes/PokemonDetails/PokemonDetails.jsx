@@ -22,41 +22,75 @@ const PokemonDetails = () => {
 
   const images = getPokemonImages(pokemon);
 
+  const stats = {
+    hp: 45,
+    attack: 49,
+    defense: 49,
+    'special-attack': 65,
+    'special-defense': 65
+  };
+
   return (
     <div className={clsx(styles.pokemonDetails, 'animated')}>
-      <h1>{pokemon.name}</h1>
+      <h1 className={styles.pokemonName}>{pokemon.name}</h1>
 
-      <div className={styles.content}>
-        <dl className={styles.pokemonInfo}>
-          <dt>Name</dt>
-          <dd>{pokemon.name}</dd>
+      <div className={styles.cardsContainer}>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Types</div>
 
-          <dt>Number</dt>
-          <dd>{pokemon.id}</dd>
+          <ul className={styles.infoList}>
+            {pokemon.types?.map(type => {
+              const name = type.type?.name;
+              return <li key={name}>{name}</li>;
+            })}
+          </ul>
+        </div>
 
-          <dt>Height</dt>
-          <dd>{pokemon.height}</dd>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Attributes</div>
+          <ul className={styles.infoList}>
+            <li>
+              <span className={styles.itemName}>number:</span>&nbsp;{pokemon.id}
+            </li>
+            <li>
+              <span className={styles.itemName}>height:</span>&nbsp;
+              {pokemon.height}
+            </li>
+            <li>
+              <span className={styles.itemName}>weight:</span>&nbsp;
+              {pokemon.weight}
+            </li>
+          </ul>
+        </div>
 
-          <dt>Weight</dt>
-          <dd>{pokemon.weight}</dd>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Stats</div>
+          <ul className={styles.infoList}>
+            {Object.entries(stats).map(([stat, value]) => (
+              <li key={stat}>
+                <span className={styles.itemName}>{stat}:</span>&nbsp;{value}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <dt>Types</dt>
-          {pokemon.types?.map(type => {
-            const name = type.type?.name;
-            return <dd key={name}>{name}</dd>;
-          })}
+        <div className={clsx(styles.card, styles.fullWidthCard)}>
+          <div className={styles.cardTitle}>Moves</div>
+          <ul className={clsx(styles.infoList, styles.moveList)}>
+            {pokemon.moves?.map(move => {
+              const name = move.move?.name;
+              return <li key={name}>{name}</li>;
+            })}
+          </ul>
+        </div>
 
-          <dt>Moves</dt>
-          {pokemon.moves?.map(move => {
-            const name = move.move?.name;
-            return <dd key={name}>{name}</dd>;
-          })}
-        </dl>
-
-        <div className={styles.gallery}>
-          {images.map((image, index) => (
-            <img key={`${image}-${index}`} src={image} className={styles.img} />
-          ))}
+        <div className={clsx(styles.card, styles.fullWidthCard)}>
+          <div className={styles.cardTitle}>Gallery</div>
+          <div className={styles.gallery}>
+            {images.map(image => (
+              <img key={image} src={image} className={styles.img} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,28 +1,92 @@
+@use 'src/styles/colors';
+
 .pokemonDetails {
   display: flex;
   flex-direction: column;
+  gap: 48px;
   height: 100%;
-  overflow: hidden;
-  text-transform: capitalize;
-
-  dt {
-    font-weight: bold;
-  }
-}
-
-.content {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  overflow: hidden;
-}
-
-.pokemonInfo,
-.gallery {
-  display: flex;
-  flex-direction: column;
   overflow: auto;
 }
 
+.pokemonName {
+  background-color: colors.$blue;
+  border-radius: 8px;
+  color: colors.$white;
+  font-size: 3em;
+  margin: 0;
+  padding: 24px 0;
+  position: sticky;
+  text-align: center;
+  text-transform: capitalize;
+  top: 0;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.card {
+  border-radius: 8px;
+  border: 1px solid colors.$grey-light;
+}
+
+.fullWidthCard {
+  grid-column: span 3;
+}
+
+.cardTitle {
+  background-color: colors.$blue-light;
+  color: colors.$white;
+  font-size: 1.2em;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.infoList {
+  list-style: none;
+  padding-left: 12px;
+
+  li {
+    align-items: center;
+    display: flex;
+    height: 24px;
+
+    &::before {
+      background-image: url('/src/assets/pokeball.webp');
+      background-size: cover;
+      content: '';
+      display: inline-block;
+      height: 16px;
+      margin-right: 8px;
+      width: 16px;
+    }
+  }
+}
+
+.itemName {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.moveList {
+  column-gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-transform: capitalize;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: 170px;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 4px;
+}
+
 .img {
-  max-width: 200px;
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
 }
