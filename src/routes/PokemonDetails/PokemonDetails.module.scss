@@ -21,6 +21,21 @@
   top: 0;
 }
 
+.favoriteButton {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.favoriteIcon {
+  color: colors.$grey;
+}
+
+.isFavorite {
+  color: colors.$red;
+}
+
 .cardsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

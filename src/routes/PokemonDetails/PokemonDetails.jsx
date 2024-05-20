@@ -1,6 +1,9 @@
 import { getPokemonDetails } from 'api/pokemon';
 import clsx from 'clsx';
+import IconButton from 'components/IconButton';
 import PokemonType from 'components/PokemonType';
+import { useFavorites } from 'context/favoritePokemon';
+import { HeartIcon } from 'icons';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './PokemonDetails.module.scss';
@@ -8,6 +11,8 @@ import { getPokemonImages, getPokemonStats } from './PokemonDetails.service';
 
 const PokemonDetails = () => {
   const { pokemonId } = useParams();
+
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   const [pokemon, setPokemon] = useState({});
 
@@ -21,13 +26,35 @@ const PokemonDetails = () => {
     }
   }, [pokemonId]);
 
+  const handleToggleFavorite = isFavorite => {
+    if (isFavorite) {
+      addFavorite(pokemon.id);
+    } else {
+      removeFavorite(pokemon.id);
+    }
+  };
+
   const images = getPokemonImages(pokemon);
 
   const stats = getPokemonStats(pokemon);
 
+  const isFavorite = favorites.includes(pokemon.id);
+
   return (
     <div className={clsx(styles.pokemonDetails, 'animated')}>
-      <h1 className={styles.pokemonName}>{pokemon.name}</h1>
+      <h1 className={styles.pokemonName}>
+        {pokemon.name}
+        <IconButton
+          className={styles.favoriteButton}
+          onClick={() => handleToggleFavorite(!isFavorite)}
+        >
+          <HeartIcon
+            className={clsx(styles.favoriteIcon, {
+              [styles.isFavorite]: isFavorite
+            })}
+          />
+        </IconButton>
+      </h1>
 
       <div className={styles.cardsContainer}>
         <div className={styles.card}>
