@@ -4,7 +4,7 @@ import PokemonType from 'components/PokemonType';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './PokemonDetails.module.scss';
-import { getPokemonImages } from './PokemonDetails.service';
+import { getPokemonImages, getPokemonStats } from './PokemonDetails.service';
 
 const PokemonDetails = () => {
   const { pokemonId } = useParams();
@@ -23,13 +23,7 @@ const PokemonDetails = () => {
 
   const images = getPokemonImages(pokemon);
 
-  const stats = {
-    hp: 45,
-    attack: 49,
-    defense: 49,
-    'special-attack': 65,
-    'special-defense': 65
-  };
+  const stats = getPokemonStats(pokemon);
 
   return (
     <div className={clsx(styles.pokemonDetails, 'animated')}>
