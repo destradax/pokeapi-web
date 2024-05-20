@@ -1,5 +1,6 @@
 import { getPokemonDetails } from 'api/pokemon';
 import clsx from 'clsx';
+import PokemonType from 'components/PokemonType';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './PokemonDetails.module.scss';
@@ -40,8 +41,12 @@ const PokemonDetails = () => {
 
           <ul className={styles.infoList}>
             {pokemon.types?.map(type => {
-              const name = type.type?.name;
-              return <li key={name}>{name}</li>;
+              const typeName = type.type?.name;
+              return (
+                <li key={typeName}>
+                  <PokemonType type={typeName} />
+                </li>
+              );
             })}
           </ul>
         </div>

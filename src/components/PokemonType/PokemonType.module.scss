@@ -1,0 +1,117 @@
+@use 'src/styles/colors';
+
+.pokemonType {
+  align-items: center;
+  border-radius: 10px;
+  display: inline-flex;
+  font-weight: bold;
+  height: 20px;
+  justify-content: center;
+  padding: 0 12px;
+  text-transform: capitalize;
+}
+
+.bug {
+  background-color: colors.$lime;
+  color: colors.$white;
+}
+
+.dark {
+  background-color: colors.$brown-dark;
+  color: colors.$white;
+}
+
+.dragon {
+  background-color: colors.$purple;
+  color: colors.$white;
+}
+
+.electric {
+  background-color: colors.$yellow;
+  color: colors.$white;
+}
+
+.fairy {
+  background-color: colors.$magenta-lighter;
+  color: colors.$white;
+}
+
+.fighting {
+  background-color: colors.$red;
+  color: colors.$white;
+}
+
+.fire {
+  background-color: colors.$orange;
+  color: colors.$white;
+}
+
+.flying {
+  background-color: colors.$purple-lighter;
+  color: colors.$white;
+}
+
+.ghost {
+  background-color: colors.$purple-light;
+  color: colors.$white;
+}
+
+.grass {
+  background-color: colors.$green;
+  color: colors.$white;
+}
+
+.ground {
+  background-color: colors.$brown;
+  color: colors.$white;
+}
+
+.ice {
+  background-color: colors.$blue-lighter;
+  color: colors.$white;
+}
+
+.normal {
+  background-color: colors.$orange-light;
+  color: colors.$white;
+}
+
+.poison {
+  background-color: colors.$magenta-dark;
+  color: colors.$white;
+}
+
+.psychic {
+  background-color: colors.$magenta;
+  color: colors.$white;
+}
+
+.rock {
+  background-color: colors.$brown-light;
+  color: colors.$white;
+}
+
+.shadow {
+  background-color: colors.$grey-dark;
+  color: colors.$white;
+}
+
+.steel {
+  background-color: colors.$grey;
+  color: colors.$white;
+}
+
+.stellar {
+  background-color: colors.$blue-light;
+  color: colors.$white;
+}
+
+.unknown {
+  background-color: colors.$black;
+  color: colors.$white;
+}
+
+.water {
+  background-color: colors.$blue;
+  color: colors.$white;
+}

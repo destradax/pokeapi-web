@@ -4,9 +4,9 @@
   align-items: center;
   border-radius: 8px;
   border: 1px solid colors.$grey-light;
+  column-gap: 12px;
   cursor: pointer;
   display: grid;
-  gap: 12px;
   grid-template-areas:
     'avatar name    fav'
     'avatar summary fav';
