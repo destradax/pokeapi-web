@@ -13,6 +13,13 @@
 
   &:disabled {
     background-color: colors.$grey-light;
+    border-color: colors.$grey;
     color: colors.$grey;
   }
+}
+
+.primary {
+  background-color: colors.$blue;
+  border-color: colors.$blue;
+  color: colors.$white;
 }

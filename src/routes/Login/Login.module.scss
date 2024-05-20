@@ -15,9 +15,13 @@
 }
 
 .form {
+  background-color: colors.$white;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 12px;
   width: 250px;
 }
 

@@ -70,7 +70,7 @@ const Login = () => {
 
         <div className={styles.errorMessage}>{errorMessage}</div>
 
-        <Button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading} variant="primary">
           Log In
         </Button>
       </form>
