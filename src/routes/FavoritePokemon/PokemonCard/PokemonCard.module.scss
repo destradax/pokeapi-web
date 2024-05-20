@@ -1,0 +1,42 @@
+@use 'src/styles/colors';
+
+.pokemonCard {
+  background-color: colors.$grey-lighter;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  &:nth-child(3n + 1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  &:hover .pokemonInfo {
+    height: 32px;
+  }
+}
+
+.artwork {
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pokemonInfo {
+  align-items: center;
+  background-color: colors.$grey-light;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 0;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  transition: height 0.2s ease-in;
+  width: 100%;
+}
+
+.pokemonName {
+  text-transform: capitalize;
+}

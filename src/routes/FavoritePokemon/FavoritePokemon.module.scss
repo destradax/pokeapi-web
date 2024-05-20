@@ -7,37 +7,10 @@
   flex-direction: column;
 }
 
-.list {
-  width: 100%;
-  overflow: auto;
-}
-
-.listItem {
-  align-items: center;
+.grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr 80px;
-  height: 40px;
-  justify-content: space-between;
-  padding: 0 12px;
-}
-
-.clickableListItem {
-  cursor: pointer;
-
-  &:hover {
-    background-color: colors.$grey-lighter;
-  }
-}
-
-.listHeader {
-  background-color: colors.$white;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  border-bottom: 1px solid colors.$grey-light;
-}
-
-.pokemonName {
-  text-transform: capitalize;
+  gap: 10px;
+  grid-auto-rows: 170px;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: auto;
 }
