@@ -39,14 +39,13 @@ const PokemonList = ({
 
   return (
     <div className={styles.pokemonList}>
-      <div>
-        <AutocompleteInput
-          value={search}
-          onChange={setSearch}
-          suggestions={pokemonList.map(({ name }) => name)}
-          placeholder="Filter by name"
-        />
-      </div>
+      <AutocompleteInput
+        value={search}
+        onChange={setSearch}
+        suggestions={pokemonList.map(({ name }) => name)}
+        placeholder="Filter by name"
+        className={styles.searchInput}
+      />
 
       <div className={styles.list}>
         <InfiniteScroll

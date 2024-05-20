@@ -1,10 +1,16 @@
 .pokemonList {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: 24px;
   overflow: hidden;
+  padding-top: 8px;
+}
+
+.searchInput {
+  flex-shrink: 0;
+  width: calc(100% - 16px);
 }
 
 .list {

@@ -22,4 +22,8 @@
   background-color: colors.$blue;
   border-color: colors.$blue;
   color: colors.$white;
+
+  &:focus-visible {
+    background-color: colors.$blue-dark;
+  }
 }
