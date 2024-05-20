@@ -21,7 +21,6 @@ const PokemonDetails = () => {
   }, [pokemonId]);
 
   const images = getPokemonImages(pokemon);
-  console.log(`🚀 ~ images:`, images);
 
   return (
     <div className={clsx(styles.pokemonDetails, 'animated')}>

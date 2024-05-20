@@ -4,9 +4,9 @@ import IconButton from 'components/IconButton';
 import { HeartIcon } from 'icons';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { getPokemonArtworkUrl } from 'util/pokemon';
 import Avatar from './Avatar';
 import styles from './PokemonListItem.module.scss';
-import { getPokemonArtworkUrl } from './PokemonListItem.service';
 import Summary from './Summary';
 
 const PokemonListItem = ({

@@ -1,7 +1,7 @@
 import { getPokemonDetails } from 'api/pokemon';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { getPokemonArtworkUrl } from 'routes/Home/PokemonList/PokemonListItem/PokemonListItem.service';
+import { getPokemonArtworkUrl } from 'util/pokemon';
 import styles from './PokemonCard.module.scss';
 
 const PokemonCard = ({ pokemonId, onClick }) => {
