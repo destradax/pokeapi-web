@@ -10,7 +10,7 @@ const FavoritesProvider = ({ children }) => {
 
   const addFavorite = pokemonId => {
     if (!favorites.includes(pokemonId)) {
-      setFavorites([...favorites, pokemonId].sort());
+      setFavorites([...favorites, pokemonId].sort((a, b) => a - b));
     }
   };
 
