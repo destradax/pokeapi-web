@@ -1,7 +1,8 @@
 import avatarSrc from 'assets/avatar.png';
 import logoSrc from 'assets/logo.png';
-import logoutSrc from 'assets/logout.png';
+import IconButton from 'components/IconButton';
 import { useSession } from 'context/session';
+import { HeartIcon, HomeIcon, LogoutIcon } from 'icons';
 import { NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
 
@@ -18,11 +19,13 @@ const Sidebar = () => {
         <ul className={styles.linkList}>
           <li>
             <NavLink to="/pokemon" className={styles.link}>
+              <HomeIcon />
               Home
             </NavLink>
           </li>
           <li>
             <NavLink to="/favorites" className={styles.link}>
+              <HeartIcon />
               Favorites
             </NavLink>
           </li>
@@ -33,9 +36,13 @@ const Sidebar = () => {
         <img src={avatarSrc} className={styles.avatar} />
         <span className={styles.userName}>{user.userName}</span>
         <span className={styles.email}>{user.email}</span>
-        <button onClick={logout} className={styles.logoutButton}>
-          <img src={logoutSrc} className={styles.logoutIcon} />
-        </button>
+        <IconButton
+          onClick={logout}
+          aria-label="logout button"
+          className={styles.logoutButton}
+        >
+          <LogoutIcon />
+        </IconButton>
       </div>
     </div>
   );
